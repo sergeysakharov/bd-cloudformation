@@ -236,3 +236,26 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 2baa6168-7810-4738-925c-c7870d0fc03b
+  
+  myVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+     CidrBlock: 10.10.0.0/16
+     EnableDnsSupport: true
+
+  RDDsecGroupName:
+     Type: AWS::EC2::SecurityGroup
+     Properties:
+       GroupName: AccessToRDS
+       GroupDescription: 'Access_to_RDS_system'
+       VpcId: myVPC
+       SecurityGroupIngress:
+       - IpProtocol : tcp
+         FromPort" : 80
+         ToPort" : 80
+         CidrIp" : 0.0.0.0/0
+       SecurityGroupEgress:
+       - IpProtocol" : tcp
+         FromPort" : 80
+         ToPort" : 80
+         CidrIp" : 0.0.0.0/0
