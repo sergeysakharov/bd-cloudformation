@@ -1,0 +1,238 @@
+AWSTemplateFormatVersion: 2010-09-09
+Metadata:
+  'AWS::CloudFormation::Designer':
+    ae61510b-e6e9-4ff8-a59e-1d0e45aa55a0:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: -30
+        'y': 90
+      z: 1
+      embeds: []
+    22cdd301-5f8d-416c-a313-506b1b2bfdad:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 160
+        'y': 90
+      z: 1
+      embeds: []
+    7429a0b0-7c73-47c0-a477-d4f313f7256e:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 60
+        'y': 180
+      z: 1
+      embeds: []
+    fb08e6af-6ef4-4255-910a-821fc0399011:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 60
+        'y': 90
+      z: 1
+      embeds: []
+    ba0e877d-60f3-4b27-ab9b-113b2bfab0a6:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: -10
+        'y': 270
+      z: 0
+      embeds: []
+    99b59d3a-06b9-4982-aec1-964a7d32cd36:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 130
+        'y': 270
+      z: 0
+      embeds: []
+    773ea464-85fe-455c-9f59-3f87bf79c8fa:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: -270
+        'y': 160
+      z: 0
+      embeds: []
+      isassociatedwith:
+        - 39ff9436-25e5-457b-9444-c25b855b5444
+    39ff9436-25e5-457b-9444-c25b855b5444:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: -390
+        'y': 160
+      z: 0
+      embeds: []
+    13a375de-0831-4502-905f-b773dc1f67bb:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: -270
+        'y': 260
+      z: 0
+      embeds: []
+      isassociatedwith:
+        - e2ea0c33-2519-4e52-8498-715d89b91ef2
+    e2ea0c33-2519-4e52-8498-715d89b91ef2:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: -390
+        'y': 260
+      z: 0
+      embeds: []
+    aa29a8a1-18a2-48b9-b99a-96b9d5441cff:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: -390
+        'y': 350
+      z: 0
+      embeds: []
+    2baa6168-7810-4738-925c-c7870d0fc03b:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: -270
+        'y': 350
+      z: 0
+      embeds: []
+      isassociatedwith:
+        - aa29a8a1-18a2-48b9-b99a-96b9d5441cff
+Resources:
+  S3BucketA:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: bd-ava-provider-nonprod-xxx1
+      VersioningConfiguration:
+        Status: Enabled
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: ae61510b-e6e9-4ff8-a59e-1d0e45aa55a0
+  S3BucketB:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: bd-docs-provider-nonprod-xxx1
+      VersioningConfiguration:
+        Status: Enabled
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: fb08e6af-6ef4-4255-910a-821fc0399011
+  S3BucketC:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: bd-photo-patients-nonprod-xxx1
+      VersioningConfiguration:
+        Status: Enabled
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 22cdd301-5f8d-416c-a313-506b1b2bfdad
+  S3BucketD:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: bd-ecs-storage-xxx1
+      VersioningConfiguration:
+        Status: Enabled
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 7429a0b0-7c73-47c0-a477-d4f313f7256e
+  ECRA:
+    Type: 'AWS::ECR::Repository'
+    Properties:
+      RepositoryName: blackdoctor-ecr-nonprod-xxx1
+      ImageScanningConfiguration:
+        ScanOnPush: true
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: ba0e877d-60f3-4b27-ab9b-113b2bfab0a6
+  ECRB:
+    Type: 'AWS::ECR::Repository'
+    Properties:
+      RepositoryName: blackdoctor-ecr-prod-xxx1
+      ImageScanningConfiguration:
+        ScanOnPush: true
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 99b59d3a-06b9-4982-aec1-964a7d32cd36
+  USERA:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: usera
+      LoginProfile:
+        Password: pa$$w0rd
+        PasswordResetRequired: true
+      Path: /
+      Groups:
+        - !Ref GroupA
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 773ea464-85fe-455c-9f59-3f87bf79c8fa
+  GroupA:
+    Type: 'AWS::IAM::Group'
+    Properties:
+      GroupName: GroupA
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 39ff9436-25e5-457b-9444-c25b855b5444
+  USERB:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: userb
+      LoginProfile:
+        Password: pa$$w0rd
+        PasswordResetRequired: true
+      Path: /
+      Groups:
+        - !Ref GroupB
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 13a375de-0831-4502-905f-b773dc1f67bb
+  GroupB:
+    Type: 'AWS::IAM::Group'
+    Properties:
+      GroupName: GroupB
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonS3FullAccess'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: e2ea0c33-2519-4e52-8498-715d89b91ef2
+  GroupC:
+    Type: 'AWS::IAM::Group'
+    Properties:   
+      GroupName: GroupC
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonRDSFullAccess'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: aa29a8a1-18a2-48b9-b99a-96b9d5441cff
+  USERC:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: userc
+      LoginProfile:
+        Password: pa$$w0rd
+        PasswordResetRequired: true
+      Path: /
+      Groups:
+        - !Ref GroupC
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 2baa6168-7810-4738-925c-c7870d0fc03b
