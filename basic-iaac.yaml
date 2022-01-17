@@ -243,20 +243,20 @@ Resources:
      CidrBlock: 10.10.0.0/16
      EnableDnsSupport: true
 
-  RDDsecGroupName:
-     Type: AWS::EC2::SecurityGroup
-     Properties:
-       GroupName: AccessToRDS
-       GroupDescription: 'Access_to_RDS_system'
-       VpcId: 
-        Ref: myVPC
-       SecurityGroupIngress:
-       - IpProtocol : tcp
-         FromPort : 80
-         ToPort : 80
-         CidrIp : 0.0.0.0/0
-       SecurityGroupEgress:
-       - IpProtocol : tcp
-         FromPort : 80
-         ToPort : 80
-         CidrIp : 0.0.0.0/0
+  RDSDsecGroupName:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: access-to-rds-sg
+      GroupDescription: 'Access_to_RDS_system'
+      VpcId: 
+         Ref: myVPC
+      SecurityGroupIngress:
+         - IpProtocol : tcp
+           FromPort : 80
+           ToPort : 80
+           CidrIp : 0.0.0.0/0
+      SecurityGroupEgress:
+         - IpProtocol : tcp
+           FromPort : 80
+           ToPort : 80
+           CidrIp : 0.0.0.0/0

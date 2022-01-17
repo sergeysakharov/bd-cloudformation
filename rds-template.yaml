@@ -1,0 +1,11 @@
+MyDB:
+  Type: AWS::RDS::DBInstance
+  Properties:
+    DBSecurityGroups:
+    - Ref: access-to-rds-sg
+    AllocatedStorage: '5'
+    DBInstanceClass: db.t2.small
+    Engine: MySQL
+    MasterUsername: admin
+    MasterUserPassword: P@ssw0rd
+  DeletionPolicy: Snapshot
