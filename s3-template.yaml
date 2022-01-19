@@ -1,0 +1,37 @@
+Resources:
+  S3BucketA:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: bd-ava-provider-nonprod-xxx1
+      VersioningConfiguration:
+        Status: Enabled
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: ae61510b-e6e9-4ff8-a59e-1d0e45aa55a0
+  S3BucketB:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: bd-docs-provider-nonprod-xxx1
+      VersioningConfiguration:
+        Status: Enabled
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: fb08e6af-6ef4-4255-910a-821fc0399011
+  S3BucketC:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: bd-photo-patients-nonprod-xxx1
+      VersioningConfiguration:
+        Status: Enabled
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 22cdd301-5f8d-416c-a313-506b1b2bfdad
+  S3BucketD:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: bd-ecs-storage-xxx1
+      VersioningConfiguration:
+        Status: Enabled
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 7429a0b0-7c73-47c0-a477-d4f313f7256e

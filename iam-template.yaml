@@ -1,0 +1,67 @@
+Resources:
+  USERA:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: usera
+      LoginProfile:
+        Password: pa$$w0rd
+        PasswordResetRequired: true
+      Path: /
+      Groups:
+        - !Ref GroupA
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 773ea464-85fe-455c-9f59-3f87bf79c8fa
+  GroupA:
+    Type: 'AWS::IAM::Group'
+    Properties:
+      GroupName: GroupA
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 39ff9436-25e5-457b-9444-c25b855b5444
+  USERB:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: userb
+      LoginProfile:
+        Password: pa$$w0rd
+        PasswordResetRequired: true
+      Path: /
+      Groups:
+        - !Ref GroupB
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 13a375de-0831-4502-905f-b773dc1f67bb
+  GroupB:
+    Type: 'AWS::IAM::Group'
+    Properties:
+      GroupName: GroupB
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonS3FullAccess'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: e2ea0c33-2519-4e52-8498-715d89b91ef2
+  GroupC:
+    Type: 'AWS::IAM::Group'
+    Properties:   
+      GroupName: GroupC
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonRDSFullAccess'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: aa29a8a1-18a2-48b9-b99a-96b9d5441cff
+  USERC:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: userc
+      LoginProfile:
+        Password: pa$$w0rd
+        PasswordResetRequired: true
+      Path: /
+      Groups:
+        - !Ref GroupC
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 2baa6168-7810-4738-925c-c7870d0fc03b
