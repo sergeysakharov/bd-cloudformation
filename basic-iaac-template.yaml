@@ -115,26 +115,7 @@ Metadata:
       embeds: []
       isassociatedwith:
         - aa29a8a1-18a2-48b9-b99a-96b9d5441cff
-Resources:
-  ECRA:
-    Type: 'AWS::ECR::Repository'
-    Properties:
-      RepositoryName: blackdoctor-ecr-nonprod-xxx1
-      ImageScanningConfiguration:
-        ScanOnPush: true
-    Metadata:
-      'AWS::CloudFormation::Designer':
-        id: ba0e877d-60f3-4b27-ab9b-113b2bfab0a6
-  ECRB:
-    Type: 'AWS::ECR::Repository'
-    Properties:
-      RepositoryName: blackdoctor-ecr-prod-xxx1
-      ImageScanningConfiguration:
-        ScanOnPush: true
-    Metadata:
-      'AWS::CloudFormation::Designer':
-        id: 99b59d3a-06b9-4982-aec1-964a7d32cd36
-  
+Resources:  
   myVPC:
     Type: AWS::EC2::VPC
     Properties:
