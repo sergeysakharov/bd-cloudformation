@@ -1,8 +1,8 @@
 Resources:
-  USERA:
+  ECSUSER:
     Type: 'AWS::IAM::User'
     Properties:
-      UserName: usera
+      UserName: ecs-user
       LoginProfile:
         Password: pa$$w0rd
         PasswordResetRequired: true
@@ -21,10 +21,10 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 39ff9436-25e5-457b-9444-c25b855b5444
-  USERB:
+  S3USER:
     Type: 'AWS::IAM::User'
     Properties:
-      UserName: userb
+      UserName: s3-user
       LoginProfile:
         Password: pa$$w0rd
         PasswordResetRequired: true
@@ -52,10 +52,10 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: aa29a8a1-18a2-48b9-b99a-96b9d5441cff
-  USERC:
+  ECRUSER:
     Type: 'AWS::IAM::User'
     Properties:
-      UserName: userc
+      UserName: ecr-user
       LoginProfile:
         Password: pa$$w0rd
         PasswordResetRequired: true
