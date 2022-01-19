@@ -1,11 +1,40 @@
-MyDB:
-  Type: AWS::RDS::DBInstance
-  Properties:
-    DBSecurityGroups:
-    - Ref: access-to-rds-sg
-    AllocatedStorage: '5'
-    DBInstanceClass: db.t2.small
-    Engine: MySQL
-    MasterUsername: admin
-    MasterUserPassword: P@ssw0rd
-  DeletionPolicy: Snapshot
+Resources:
+  EC2SGRDS:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: access-to-rds-sg
+      GroupDescription: 'Access_to_RDS_system'
+      VpcId: 
+        Fn::ImportValue: myVPCexport
+      SecurityGroupIngress:
+         - IpProtocol : tcp
+           FromPort : 3306
+           ToPort : 3306
+           CidrIp : 0.0.0.0/0
+      SecurityGroupEgress:
+         - IpProtocol : tcp
+           FromPort : 3306
+           ToPort : 3306
+           CidrIp : 0.0.0.0/0  
+  
+  MyDbSecurityByCIDRIPsGroup:
+    Type: AWS::RDS::DBSecurityGroup
+    Properties:
+      GroupDescription: Ingress for CIDRIP
+      DBSecurityGroupIngress:
+        CIDRIP: "10.10.0.0/16"
+
+  RDSDBA:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      VPCSecurityGroups:
+       - !Ref EC2SGRDS
+      DBSecurityGroups:
+       - !Ref MyDbSecurityByCIDRIPsGroup
+      DBName: MYSQLDBName
+      AllocatedStorage: '5'
+      DBInstanceClass: db.t2.micro
+      Engine: MySQL
+      MasterUsername: admin
+      MasterUserPassword: passw0rd!!
+    
