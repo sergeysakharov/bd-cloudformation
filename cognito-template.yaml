@@ -1,0 +1,40 @@
+Resources:
+  COGNITOA:
+    Type: 'AWS::Cognito::UserPool'
+    Properties:
+      UserPoolName: blackdoctor-cognito-admin-nonprod
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+      UsernameAttributes:
+        - email
+      Schema:
+        - AttributeDataType: String
+          Name: email
+          Required: false
+  COGNITOB:
+    Type: 'AWS::Cognito::UserPool'
+    Properties:
+      UserPoolName: blackdoctor-cognito-patients-nonprod
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+      UsernameAttributes:
+        - email
+      Schema:
+        - AttributeDataType: String
+          Name: email
+          Required: false
+  COGNITOC:
+    Type: 'AWS::Cognito::UserPool'
+    Properties:
+      UserPoolName: blackdoctor-cognito-providers-nonprod
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+      UsernameAttributes:
+        - email
+      Schema:
+        - AttributeDataType: String
+          Name: email
+          Required: false                    
